@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="cta-section theme-bg-light py-5">
+    <div class="container text-center">
+        <h2 class="heading">Welcome {{ user.username }}</h2>
+        <div class="intro">This is your profile.</div>
+    </div>
+</section>
+
+{% endblock %}
+

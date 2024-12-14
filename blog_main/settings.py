@@ -56,7 +56,9 @@ ROOT_URLCONF = 'blog_main.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [
+            BASE_DIR / 'blog_main/templates',
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,11 +121,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Jeśli używasz folderów statycznych w aplikacjach, upewnij się, że masz włączoną opcję:
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Przykład, jeśli masz folder static w głównym katalogu projektu
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGOUT_REDIRECT_URL = 'home'
-LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
 #LOGIN_URL = 'templates/accounts/login.html'

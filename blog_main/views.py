@@ -9,3 +9,9 @@ def home(request):
     }
 
     return render(request, 'home.html', context)
+
+def new_post(request):
+    if request.method == 'POST':
+        # Handle form submission
+        pass
+    return render(request, 'new_post.html')
