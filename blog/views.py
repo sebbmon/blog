@@ -30,3 +30,12 @@ def new_post(request):
         form = PostForm()
 
     return render(request, 'blog/new_post.html', {'form': form})
+
+def post_list(request):
+    posts = Post.objects.all()  # Pobranie wszystkich postów
+    return render(request, 'blog/post_list.html', {'posts': posts})
+
+def post_detail(request, id):
+    post = get_object_or_404(Post, id=id)  # Pobranie posta na podstawie ID
+    return render(request, 'blog/post_detail.html', {'post': post})
+

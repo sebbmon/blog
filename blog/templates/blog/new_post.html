@@ -12,13 +12,98 @@
 
 <section class="new-post-section py-5">
     <div class="container">
-        <h2>Create a New Post</h2>
-        <form method="POST">
+        <form method="POST" class="new-post-form">
+            <h2 class="mb-4 text-center">Create a New Post</h2>
             {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="form-group mb-4">
+                <label for="id_title" class="form-label">Title</label>
+                {{ form.title }}
+            </div>
+            <div class="form-group mb-4">
+                <label for="id_content" class="form-label">Content</label>
+                {{ form.content }}
+            </div>
+            <button type="submit" class="btn btn-primary submit-btn">Submit</button>
         </form>
     </div>
 </section>
+
+<style>
+    .new-post-section {
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+
+    .new-post-section h2 {
+        color: #333;
+        font-size: 2rem;
+        font-weight: 600;
+    }
+
+    .new-post-form {
+        background-color: #ffffff;
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow: 0 0 16px 10px rgba(0, 0, 0, 0.1);
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .form-label {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #495057;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        width: 100%;
+        padding: 15px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        font-size: 1rem;
+        color: #495057;
+        box-sizing: border-box;
+    }
+
+    .form-group textarea {
+        height: 250px;
+        resize: vertical;
+    }
+
+    .submit-btn {
+        background-color: #5ecca9;
+        width: 100%;
+        color: #fff;
+        border: none;
+        font-size: 1.2rem;
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 50px;
+    }
+
+    .submit-btn:hover {
+        background-color: #40ae8b;
+        cursor: pointer; 
+    }
+
+    .form-group .errorlist {
+        color: #dc3545;
+        list-style: none;
+        padding: 0;
+        margin: 5px 0 0;
+    }
+
+    .form-group .errorlist li {
+        font-size: 0.9rem;
+    }
+</style>
 {% endblock %}
 

@@ -5,7 +5,7 @@
 {% block content %}
 <section class="cta-section theme-bg-light py-5">
     <div class="container text-center">
-        <h2 class="heading">DevBlog - A Blog Template Made For Developers</h2>
+        <h2 class="heading">Sebastian's blog - A Blog Application created with Django</h2>
         <div class="intro">Welcome to my blog. Subscribe and get my latest blog post in your inbox.</div>
         <form class="signup-form form-inline justify-content-center pt-3">
             <div class="form-group">
@@ -24,7 +24,7 @@
             <div class="media">
                 <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/blog-post-thumb-1.jpg" alt="image">
                 <div class="media-body">
-                    <h3 class="title mb-1"><a href="blog-post.html">{{ post.title }}</a></h3>
+                    <h3 class="title mb-1"><a href="{% url 'post_detail' id=post.id %}">{{ post.title }}</a></h3>
                     <div class="meta mb-1">
                         <span class="date">Published on: {{ post.created_at }}</span>
                         <span class="author"><a href="#">{{ post.author }}</a></span>

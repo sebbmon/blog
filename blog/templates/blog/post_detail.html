@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="cta-section theme-bg-light py-5">
+    <div class="container text-center">
+        <h2 class="heading">Welcome {{ user.username }}</h2>
+        <div class="intro">This is post detail site where you can read whole post.</div>
+    </div>
+</section>
+
+<section class="blog-list px-3 py-5 p-md-5">
+    <div class="container">
+
+        <h1>{{ post.title }}</h1>
+<p><strong>Autor:</strong> {{ post.author }}</p>
+<p><strong>Opublikowano:</strong> {{ post.published_at }}</p>
+<div>
+    <p>{{ post.content }}</p>
+</div>
+    </div>
+</section>
+
+
+{% endblock %}
+
