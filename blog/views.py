@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post
+from .models import Post, Comment
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from .forms import PostForm
+from .forms import PostForm, CommentForm
 
 def home(request):
     posts = Post.objects.all()  # Pobieranie wszystkich postów
@@ -36,6 +36,21 @@ def post_list(request):
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 def post_detail(request, id):
-    post = get_object_or_404(Post, id=id)  # Pobranie posta na podstawie ID
-    return render(request, 'blog/post_detail.html', {'post': post})
+    post = get_object_or_404(Post, id=id)  # Użycie id zamiast pk
+    comments = post.comments.all()
+    form = CommentForm()
+
+    if request.method == "POST":
+        if request.user.is_authenticated:
+            form = CommentForm(request.POST)
+            if form.is_valid():
+                comment = form.save(commit=False)
+                comment.post = post
+                comment.author = request.user
+                comment.save()
+                return redirect('post_detail', id=post.id)
+        else:
+            return redirect('login')
+
+    return render(request, 'blog/post_detail.html', {'post': post, 'comments': comments, 'form': form})
 
