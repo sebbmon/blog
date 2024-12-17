@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
+from django.urls import reverse
 from .forms import PostForm, CommentForm
+from .models import Post, Comment
 
 def home(request):
     posts = Post.objects.all()  # Pobieranie wszystkich postów
@@ -54,3 +56,33 @@ def post_detail(request, id):
 
     return render(request, 'blog/post_detail.html', {'post': post, 'comments': comments, 'form': form})
 
+
+def edit_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+
+    # Jeśli użytkownik nie jest autorem posta, przekieruj go
+    if request.user.username != post.author:
+        return HttpResponseRedirect(reverse('home'))
+
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('post_detail', args=[post.id]))
+    else:
+        form = PostForm(instance=post)
+
+    form.fields['title'].widget.attrs.update({'class': 'form-control'})
+    form.fields['content'].widget.attrs.update({'class': 'form-control'})
+
+    return render(request, 'blog/edit_post.html', {'form': form})
+
+@login_required
+def delete_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+
+    if request.user.username != post.author:
+        return HttpResponseForbidden("You don't have permission to do that.")
+    
+    post.delete()
+    return redirect(reverse('home'))

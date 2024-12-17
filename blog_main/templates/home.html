@@ -28,6 +28,7 @@
                     <div class="meta mb-1">
                         <span class="date">Published on: {{ post.created_at }}</span>
                         <span class="author"><a href="#">{{ post.author }}</a></span>
+                        <span class="date">{{ post.comments.count }} comments</span>
                     </div>
                     <div class="intro">{{ post.content|truncatechars:1000 }}</div>
                 </div>
