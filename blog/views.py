@@ -86,3 +86,16 @@ def delete_post(request, post_id):
     
     post.delete()
     return redirect(reverse('home'))
+
+@login_required
+def profile(request):
+    posts = Post.objects.filter(author=request.user.username)
+
+    comments = Comment.objects.filter(author=request.user)
+
+
+    return render(request, 'blog/profile.html', {
+        'user': request.user,
+        'posts': posts,
+        'comments': comments
+        })

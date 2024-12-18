@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="cta-section theme-bg-light py-5">
+    <div class="container text-center">
+        <h2 class="heading">Welcome {{ user.username }}</h2>
+        <div class="intro">This is your profile.</div>
+    </div>
+</section>
+
+<section class="profile-section py-5">
+    <div class="container">
+        <h1 class="text-center mb-4">Profil użytkownika</h1>
+
+        <div class="profile-info mb-5">
+            <h3>Informacje o użytkowniku</h3>
+            <ul class="list-group">
+                <li class="list-group-item"><strong>Bio:</strong> {{ user.profile.bio }}</li>
+                <li class="list-group-item"><strong>Email:</strong> {{ user.email }}</li>
+                <li class="list-group-item"><strong>Data rejestracji:</strong> {{ user.date_joined }}</li>
+            </ul>
+        </div>
+
+        <div class="posts-section mb-5">
+            <h3>Moje Posty</h3>
+            {% if posts %}
+                <ul class="list-group">
+                    {% for post in posts %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="{% url 'post_detail' post.id %}" class="text-decoration-none">{{ post.title }}</a>
+                            <div class="btn-group" role="group">
+                                <a href="{% url 'edit_post' post.id %}" class="btn btn-warning btn-sm">Edytuj</a>
+                                <a href="{% url 'delete_post' post.id %}" class="btn btn-danger btn-sm">Usuń</a>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-muted">Brak postów.</p>
+            {% endif %}
+        </div>
+
+        <div class="comments-section">
+            <h3>Moje Komentarze</h3>
+            {% if comments %}
+                <ul class="list-group">
+                    {% for comment in comments %}
+                        <li class="list-group-item">
+                            <p>{{ comment.content }}</p>
+                            <a href="{% url 'post_detail' comment.post.id %}" class="btn btn-link">Do posta</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="text-muted">Brak komentarzy.</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+

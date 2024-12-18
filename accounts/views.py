@@ -18,9 +18,5 @@ def register(request):
 
 from django.contrib.auth.decorators import login_required
 
-@login_required
-def profile(request):
-    return render(request, 'accounts/profile.html', {'user': request.user})
-
 def home(request):
     return render(request, 'home.html')
