@@ -6,34 +6,35 @@
 <section class="cta-section theme-bg-light py-5">
     <div class="container text-center">
         <h2 class="heading">Welcome {{ user.username }}</h2>
-        <div class="intro">This is your profile.</div>
+        <div class="intro">This is the profile page of {{ profile.username }}.</div>
     </div>
 </section>
 
 <section class="profile-section py-5">
     <div class="container">
-        <h1 class="text-center mb-4">Profil użytkownika</h1>
+        <h1 class="text-center mb-4">Informacje o użytkowniku: {{ profile.username }}</h1>
 
-        <div class="profile-info mb-5">
-            <h3>Informacje o użytkowniku</h3>
+        <div class="profile-info mb-5 py-3">
+            <h3>Informacje</h3>
             <ul class="list-group">
-                <li class="list-group-item"><strong>Bio:</strong> {{ user.profile.bio }}</li>
-                <li class="list-group-item"><strong>Email:</strong> {{ user.email }}</li>
-                <li class="list-group-item"><strong>Data rejestracji:</strong> {{ user.date_joined }}</li>
+                <li class="list-group-item"><strong>Email:</strong> {{ profile.email }}</li>
+                <li class="list-group-item"><strong>Data rejestracji:</strong> {{ profile.date_joined }}</li>
             </ul>
         </div>
 
+        {% if profile == user %}
+        <div class="text-center mb-5">
+            <a href="#" class="btn btn-primary">Edytuj profil</a>
+        </div>
+        {% endif %}
+
         <div class="posts-section mb-5">
-            <h3>Moje Posty</h3>
+            <h3>Posty</h3>
             {% if posts %}
                 <ul class="list-group">
                     {% for post in posts %}
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <li class="list-group-item">
                             <a href="{% url 'post_detail' post.id %}" class="text-decoration-none">{{ post.title }}</a>
-                            <div class="btn-group" role="group">
-                                <a href="{% url 'edit_post' post.id %}" class="btn btn-warning btn-sm">Edytuj</a>
-                                <a href="{% url 'delete_post' post.id %}" class="btn btn-danger btn-sm">Usuń</a>
-                            </div>
                         </li>
                     {% endfor %}
                 </ul>
@@ -43,7 +44,7 @@
         </div>
 
         <div class="comments-section">
-            <h3>Moje Komentarze</h3>
+            <h3>Komentarze</h3>
             {% if comments %}
                 <ul class="list-group">
                     {% for comment in comments %}

@@ -5,6 +5,7 @@ from django.utils import timezone
 from django.urls import reverse
 from .forms import PostForm, CommentForm
 from .models import Post, Comment
+from django.contrib.auth.models import User
 
 def home(request):
     posts = Post.objects.all()  # Pobieranie wszystkich postów
@@ -87,15 +88,20 @@ def delete_post(request, post_id):
     post.delete()
     return redirect(reverse('home'))
 
-@login_required
-def profile(request):
-    posts = Post.objects.filter(author=request.user.username)
 
-    comments = Comment.objects.filter(author=request.user)
+def profile(request, author=None):
+    if author:
+        profile_user = get_object_or_404(User, username=author)
+    else:
+        profile_user = request.user
+
+    posts = Post.objects.filter(author=profile_user.username)
+
+    comments = Comment.objects.filter(author=profile_user)
 
 
     return render(request, 'blog/profile.html', {
-        'user': request.user,
+        'profile': profile_user,
         'posts': posts,
         'comments': comments
         })
