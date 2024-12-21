@@ -51,7 +51,7 @@
         {% else %}
         <p><strong>Autor:</strong> <a href="{% url 'profile' post.author %}">{{ post.author }}</a></p>
         {% endif %}
-        <p><strong>Opublikowano:</strong> {{ post.published_at }}</p>
+        <p><strong>Opublikowano:</strong> {{ post.published_at|timesince }} ago</p>
         <div>
             <p>{{ post.content }}</p>
         </div>
