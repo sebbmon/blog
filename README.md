@@ -19,18 +19,32 @@ Prosty blog stworzony w Django, umożliwiający użytkownikom rejestrację, logo
 
 ## Instalacja i uruchomienie
 1. Sklonuj repozytorium:
+   ```
    git clone https://github.com/sebbmon/blog.git
+   ```
 2. Przejdź do folderu projektu:
+   ```
    cd blog
-4. Utwórz i aktywuj wirtualne środowisko:
+   ```
+3. Utwórz i aktywuj wirtualne środowisko:
+   ```
    python -m venv venv
    source venv/bin/activate    # Linux / Mac
    venv\Scripts\activate       # Windows
-5. Zainstaluj wymagane pakiety:
+   ```
+4. Zainstaluj wymagane pakiety:
+   ```
    pip install -r requirements.txt
-6. Wykonaj migracje bazy danych:
+   ```
+5. Wykonaj migracje bazy danych:
+   ```
    python manage.py migrate
-7. Uruchom serwer:
+   ```
+6. Uruchom serwer:
+   ```
    python manage.py runserver
-8. Wejdź w przeglądarce na:
+   ```
+7. Wejdź w przeglądarce na:
+   ```
    http://127.0.0.1:8000/
+   ```
