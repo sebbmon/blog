@@ -1,66 +1,109 @@
-/* Resetowanie stylów */
 body, html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    height: 100vh;
 }
 
-/* Wyśrodkowanie ekranu logowania */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-}
-
-/* Stylizacja kontenera logowania */
-.login-container {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ddd;
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
-}
-
-/* Nagłówek */
-.login-container h2 {
-    margin-bottom: 20px;
-    font-size: 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: #333;
 }
 
-/* Przyciski */
-button[type="submit"] {
-    background-color: #007BFF;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
+.login-container {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    transition: transform 0.3s ease;
 }
 
-button[type="submit"]:hover {
-    background-color: #0056b3;
-}
-
-/* Formularz */
-form {
-    margin-top: 15px;
+.login-container h2 {
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #444;
 }
 
 form p {
-    margin-bottom: 15px;
+    text-align: left;
+    margin-bottom: 20px;
 }
 
-input {
-    width: calc(100% - 20px);
-    padding: 8px 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+form label {
+    font-size: 0.85rem;
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #667eea;
+    background-color: #fff;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+button[type="submit"] {
+    width: 100%;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    color: #fff;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-top: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+}
+
+.auth-switch {
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.auth-switch a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+
+.helptext {
+    font-size: 0.75rem;
+    color: #888;
+    display: block;
+    margin-top: 4px;
 }

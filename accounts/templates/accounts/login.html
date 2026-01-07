@@ -4,17 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Log In</title>
+    <title>Log In | Sebastian's Blog</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <div class="login-container">
-        <h2>Log In</h2>
+        <h2>Welcome Back</h2>
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
+            
             <button type="submit">Log In</button>
         </form>
+
+        <div class="auth-switch">
+            Don't have an account? <a href="{% url 'register' %}">Sign up</a>
+        </div>
     </div>
 </body>
 </html>

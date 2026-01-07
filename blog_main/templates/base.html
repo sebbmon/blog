@@ -9,9 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Blog Template">
     <link rel="shortcut icon" href="favicon.ico"> 
-    <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js" integrity="sha384-eVEQC9zshBn0rFj4+TU78eNA19HMNigMviK/PU/FFjLXqa/GKPgX58rvt5Z8PLs7" crossorigin="anonymous"></script>
-    <link id="theme-style" rel="stylesheet" href="{% static 'css/theme-4.css' %}">
-    </head> 
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    
+    <script defer src="https://use.fontawesome.com/releases/v5.7.1/js/all.js"></script>
+    
+    <link id="theme-style" rel="stylesheet" href="{% static 'css/theme-1.css' %}">
+</head>
 
 <body>
     <header class="header text-center">	    
@@ -22,8 +26,12 @@
             </button>
             <div id="navigation" class="collapse navbar-collapse flex-column">
                 <div class="profile-section pt-3 pt-lg-0">
-                    <img class="profile-image mb-3 rounded-circle mx-auto" src="{% static 'images/me.jpg' %}" alt="image">			
-                    <div class="bio mb-3">Hi, my name is Sebastian. What you see here is my "Blog project" using Django. Hope you like it :)<br><a href="about.html">Find out more about me</a></div>
+                    {% if user.is_authenticated %}
+                        <img class="profile-image mb-3 rounded-circle mx-auto"
+                            src="https://ui-avatars.com/api/?name={{ user.username }}"
+                            alt="avatar">
+                    {% endif %}		
+                    <div class="bio mb-3">Hi, my name is Sebastian. What you see here is my "Blog project" using Django. Hope you like it :)<br><a href="https://github.com/sebbmon" target="_blank">Find out more about me</a></div>
                     <ul class="social-list list-inline py-3 mx-auto">
                         <li class="list-inline-item"><a href="#"><i class="fab fa-facebook fa-fw"></i></a></li>
                         <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in fa-fw"></i></a></li>
@@ -70,12 +78,12 @@
         {% block content %}{% endblock %}
     </main>
     
-    <footer class="footer text-center py-2 theme-bg-dark">
-        <p>&copy; 2024 Sebastian's Blog. All rights reserved.</p>
+    <footer class="footer text-center py-2">
+        <p>2024 Sebastian's Blog.</p>
     </footer>
     
-    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-    <script src="{% static 'js/popper.min.js' %}"></script> 
-    <script src="{% static 'js/bootstrap.min.js' %}"></script> 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Home{% endblock %}
 
@@ -22,7 +23,7 @@
         {% for post in page_obj %}
         <div class="item mb-5">
             <div class="media">
-                <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="assets/images/blog/blog-post-thumb-1.jpg" alt="image">
+                <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{% static 'images/2.jpg' %}" alt="image">
                 <div class="media-body">
                     <h3 class="title mb-1"><a href="{% url 'post_detail' id=post.id %}">{{ post.title }}</a></h3>
                     <div class="meta mb-1">
@@ -30,7 +31,7 @@
                         <span class="author"><a href="{% url 'profile' post.author %}">{{ post.author }}</a></span>
                         <span class="date">{{ post.comments.count }} comments</span>
                     </div>
-                    <div class="intro">{{ post.content|truncatechars:600 }}</div>
+                    <div class="intro">{{ post.content|truncatechars:300 }}</div>
                     <strong><a class="more-link" href="{% url 'post_detail' id=post.id %}">Read more &rarr;</a></strong>
                 </div>
             </div>
