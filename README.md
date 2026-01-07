@@ -4,7 +4,7 @@
 
 ---
 
-## 🚀 Technologie
+## Technologie
 - Python
 - Django
 - SQLite
@@ -14,12 +14,12 @@
 
 ---
 
-## ✨ Funkcjonalności
-- 🔐 Rejestracja i logowanie użytkowników  
-- 📝 Tworzenie, edytowanie i usuwanie postów  
-- 💬 Dodawanie i przeglądanie komentarzy  
-- 👤 Przeglądanie profili innych użytkowników  
-- 📱 Responsywny design dzięki Bootstrap  
+## Funkcjonalności
+- Rejestracja i logowanie użytkowników  
+- Tworzenie, edytowanie i usuwanie postów  
+- Dodawanie i przeglądanie komentarzy  
+- Przeglądanie profili innych użytkowników  
+- Responsywny design dzięki Bootstrap  
 
 ---
 
